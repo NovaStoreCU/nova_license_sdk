@@ -1,0 +1,22 @@
+name: nova_license_sdk
+description: Validacion suave (lazy) de licencias para apps de pago de NovaStore. 2 lineas de integracion.
+version: 1.0.0
+homepage: https://github.com/NovaStoreCU/nova_license_sdk
+
+environment:
+  sdk: ^3.12.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  shared_preferences: ^2.3.0
+  url_launcher: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
