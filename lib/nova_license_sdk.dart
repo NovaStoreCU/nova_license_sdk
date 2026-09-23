@@ -22,3 +22,4 @@ library;
 export 'src/nova_license.dart';
 export 'src/nova_license_config.dart';
 export 'src/license_required_screen.dart';
+export 'src/nova_logo.dart';

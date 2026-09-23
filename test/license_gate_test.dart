@@ -65,8 +65,8 @@ void main() {
     ));
     await tester.pumpAndSettle();
 
-    expect(find.text('Requiere licencia'), findsOneWidget);
-    expect(find.text('Tu código de dispositivo'), findsOneWidget);
+    expect(find.text('LICENCIA REQUERIDA'), findsOneWidget);
+    expect(find.text('CÓDIGO DE ACTIVACIÓN DE TU DISPOSITIVO'), findsOneWidget);
   });
 
   testWidgets('network error without cache shows the required screen offline',
@@ -78,7 +78,7 @@ void main() {
     ));
     await tester.pumpAndSettle();
 
-    expect(find.text('Reintentar comprobación'), findsOneWidget);
+    expect(find.text('SIN CONEXIÓN A INTERNET'), findsOneWidget);
   });
 
   testWidgets('cached license survives network outage within grace', (tester) async {
@@ -106,6 +106,7 @@ void main() {
     ));
     await tester.pumpAndSettle();
 
-    expect(find.text('Reintentar comprobación'), findsOneWidget);
+    expect(find.text('SIN CONEXIÓN A INTERNET'), findsOneWidget);
+    expect(find.text('Reintentar Conexión'), findsOneWidget);
   });
 }
