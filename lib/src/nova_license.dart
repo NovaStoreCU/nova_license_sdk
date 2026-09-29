@@ -263,7 +263,8 @@ class _LicenseGateState extends State<_LicenseGate> {
   @override
   Widget build(BuildContext context) {
     if (_checking) {
-      return (widget.splashBuilder ?? _DefaultSplash.create)(context);
+      final splash = (widget.splashBuilder ?? _DefaultSplash.create)(context);
+      return _wrapInApp(splash);
     }
 
     if (_status == NovaLicenseStatus.valid) {
@@ -273,16 +274,28 @@ class _LicenseGateState extends State<_LicenseGate> {
     final offline = _status == NovaLicenseStatus.offline || _status == NovaLicenseStatus.error;
 
     if (offline && widget.errorBuilder != null) {
-      return widget.errorBuilder!(context);
+      return _wrapInApp(widget.errorBuilder!(context));
     }
 
-    return LicenseRequiredScreen(
-      deviceCode: _deviceId ?? '- - -',
-      storeUrl: _storeUrl(),
-      offline: offline,
-      errorMessage: _error,
-      onRetry: offline ? _check : null,
-      onRefresh: offline ? null : _check,
+    return _wrapInApp(
+      LicenseRequiredScreen(
+        deviceCode: _deviceId ?? '- - -',
+        storeUrl: _storeUrl(),
+        offline: offline,
+        errorMessage: _error,
+        onRetry: offline ? _check : null,
+        onRefresh: offline ? null : _check,
+      ),
+    );
+  }
+
+  /// The gate can be used at the very root (outside any MaterialApp, e.g.
+  /// `runApp(novaLicenseGuard(...))`), so the splash and the license screen
+  /// must wrap themselves in their own MaterialApp to have Directionality.
+  Widget _wrapInApp(Widget home) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: home,
     );
   }
 

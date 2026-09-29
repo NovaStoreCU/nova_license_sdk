@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="nova_license_sdk_example"
+        android:label="SDK Prueba"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

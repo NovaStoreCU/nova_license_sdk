@@ -6,10 +6,10 @@ void main() {
   runApp(
     novaLicenseGuard(
       config: const NovaLicenseGuardConfig(
-        apiBase: 'http://192.168.1.17:8000/api/v1',
-        storeUrl: 'http://192.168.1.17:8000',
-        packageName: 'com.midemo.game',
-        storeSlug: 'mi-juego',
+        apiBase: 'https://api.nexuscloud.cu/api/v1',
+        storeUrl: 'https://api.nexuscloud.cu',
+        packageName: 'com.novastore.sdktest',
+        storeSlug: '',
       ),
       child: const DemoApp(),
     ),
